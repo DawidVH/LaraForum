@@ -1,12 +1,12 @@
-@include('layouts.header')
-@include('layouts.navbar')
+@include('partials.header')
+@include('partials.navbar')
 
 <main role="main" class="container">
     <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
+        <h1>Welcome</h1>
+        <p class="lead">Welcome to my forum</p>
         <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
     </div>
 </main>
 
-@include('layouts.footer')
+@include('partials.footer')

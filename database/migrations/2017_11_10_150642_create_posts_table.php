@@ -15,10 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sectionId')->unsigned();
-            $table->foreign('sectionId')->references('id')->on('sections');
-            $table->integer('userId')->unsigned();
-            $table->foreign('userId')->references('id')->on('users');
+            $table->integer('thread_id');
+            $table->integer('user_id');
             $table->text('content')->notnull();
             $table->timestamps();
         });
@@ -31,9 +29,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts', function(Blueprint $table) {
-            $table->dropForeign('posts_sectionId_foreign');
-            $table->dropForeign('posts_userId_foreign');
-        });
+        Schema::dropIfExists('posts');
     }
 }
