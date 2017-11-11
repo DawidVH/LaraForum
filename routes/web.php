@@ -1,5 +1,6 @@
 <?php
-Route::get('/', 'ForumController@index');
+Route::get('/', 'SectionController@index');
+Route::get('/section/{section}', 'SectionController@show');
 
 Auth::routes();
 
