@@ -13,7 +13,6 @@ class SectionController extends Controller
     }
 
     public function show(Section $section) {
-        $threads = $section->getThreads();
-        return view('forum.section', compact('threads'));
+        return view('forum.section', compact('section'));
     }
 }
