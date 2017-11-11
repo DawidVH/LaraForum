@@ -22,8 +22,8 @@
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                        <span class="icon-bar">stuff</span>
+                        <span class="icon-bar">stuff2</span>
                         <span class="icon-bar"></span>
                     </button>
 
@@ -70,8 +70,9 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <main role="main" class="container">
+            @yield('content')
+        </main>
     </div>
 
     <!-- Scripts -->
