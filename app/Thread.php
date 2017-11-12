@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+    protected $guarded = [];
     public function posts() {
         return $this->hasMany('App\Post');
     }
@@ -14,5 +15,9 @@ class Thread extends Model
     }
     public function section() {
         return $this->belongsTo('App\Section');
+    }
+
+    public function addPost($post) {
+        $this->posts()->create($post);
     }
 }
