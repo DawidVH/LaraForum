@@ -40,7 +40,7 @@
                         @foreach($section->threads()->latest()->get() as $thread)
                             <div class="card card-default" style="width: 60rem;">
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="/thread/{{$thread->id}}">{{$thread->name}}</a></h4>
+                                    <h4 class="card-title"><a href="/section/{{$section->id}}/{{$thread->id}}">{{$thread->name}}</a></h4>
 
                                     <h5 class="card-subtitle mb-2 text-muted">Created by <a href="/user/{{$thread->user->id}}">{{$thread->user->name}}</a>
                                          {{$thread->created_at->diffForHumans()}}</h5>

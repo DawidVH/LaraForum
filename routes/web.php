@@ -1,7 +1,7 @@
 <?php
 Route::get('/', 'SectionController@index');
 Route::get('/section/{section}', 'SectionController@show');
-Route::get('/thread/{thread}', 'ThreadController@show');
+Route::get('/section/{section}/{thread}', 'ThreadController@show');
 Route::get('/user/{user}', 'UserController@show');
 
 Route::post('/section/{section}/create', 'ThreadController@store');
