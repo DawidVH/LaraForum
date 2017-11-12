@@ -8,9 +8,9 @@ class PostController extends Controller
 {
     public function store(Thread $thread) {
         $thread->addPost([
-            'content' =>request('content'),
+            'content' => request('content'),
             'user_id' => auth()->id(),
-            'thread_id' => $thread->id,
+            'thread_id' => $thread->id
         ]);
         return back();
     }

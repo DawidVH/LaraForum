@@ -37,6 +37,8 @@
                             </form>
                         </div>
                     </div>
+                @else
+                    <p>Please login to post replies.</p>
                 @endif
                 </div>
         </div>

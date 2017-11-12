@@ -7,7 +7,34 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>{{$section->name}}</h2>
-                        <button type="button" href="/section/{{$section->id}}/create"class="btn btn-primary">Create a thread</button>
+                        @if(auth()->check())
+                            <p>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCreateThread" aria-expanded="false" aria-controls="collapseExample">
+                                    Create a thread
+                                </button>
+                            </p>
+                            <div class="collapse" id="collapseCreateThread">
+                                <div class="card card-default">
+                                    <div class="card-heading">
+                                        <h4>Post a reply</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="post" action="/section/{{$section->id}}/create">
+                                            {{csrf_field()}}
+                                            <div class="form-group">
+                                                <input name="title" id="title" class="form-control" placeholder="Title">
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea name="content" id="content" class="form-control" placeholder="Content" rows="5"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Post</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <p>Please login to post a thread.</p>
+                        @endif
                     </div>
                     <div class="panel-body">
                         @foreach($section->threads()->get() as $thread)
