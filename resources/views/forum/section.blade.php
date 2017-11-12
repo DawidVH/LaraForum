@@ -16,7 +16,7 @@
                             <div class="collapse" id="collapseCreateThread">
                                 <div class="card card-default">
                                     <div class="card-heading">
-                                        <h4>Post a reply</h4>
+                                        <h4>Create a thread</h4>
                                     </div>
                                     <div class="card-body">
                                         <form method="post" action="/section/{{$section->id}}/create">
@@ -37,12 +37,12 @@
                         @endif
                     </div>
                     <div class="panel-body">
-                        @foreach($section->threads()->get() as $thread)
+                        @foreach($section->threads()->latest()->get() as $thread)
                             <div class="card card-default" style="width: 60rem;">
                                 <div class="card-body">
                                     <h4 class="card-title"><a href="/thread/{{$thread->id}}">{{$thread->name}}</a></h4>
 
-                                    <h5 class="card-subtitle mb-2 text-muted">Created by <a href="#">{{$thread->user->name}}</a>
+                                    <h5 class="card-subtitle mb-2 text-muted">Created by <a href="/user/{{$thread->user->id}}">{{$thread->user->name}}</a>
                                          {{$thread->created_at->diffForHumans()}}</h5>
                                     <hr>
                                     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

@@ -6,7 +6,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2>{{$thread->name}}</h2>
-                        <h4>Created by {{$thread->user->name}}</h4>
+                        <h4>Created by <a href="/user/{{$thread->user->id}}">{{$thread->user->name}}</a></h4>
                     </div>
                     <div class="panel-body">
                         <p>{{$thread->content}}</p>
@@ -15,7 +15,7 @@
                 @foreach($thread->posts()->get() as $post)
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>{{$post->user->name}}</h4>
+                            <h4><a href="/user/{{$post->user->id}}">{{$post->user->name}}</a> said:</h4>
                         </div>
                         <div class="panel-body">
                             <p>{{$post->content}}</p>

@@ -12,9 +12,7 @@
                             <div class="card" style="width: 50rem;">
                                 <div class="card-body">
                                     <h3 class="card-title"><a href="/section/{{$section->id}}">{{$section->name}}</a></h3>
-                                    <h4>Latest thread: {{$section->threads->last()->name}}</h4>
-                                    <h6 class="card-subtitle mb-2 text-muted">Created by: <a href="#">
-                                            {{$section->threads->last()->user->name}}</a></h6>
+                                    <h4>Latest thread: <a href="/thread/{{$section->threads->last()->id}}">{{$section->threads->last()->name}}</a></h4>
                                     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     <a href="#" class="card-link">Card link</a>
                                     <a href="#" class="card-link">Another link</a>-->
