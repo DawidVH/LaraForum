@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Section extends Model
 {
     public function threads() {
-        return $this->hasMany('App\Thread');
+        return $this->hasMany(Thread::class);
     }
 
     public function addThread($thread) {

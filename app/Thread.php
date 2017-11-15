@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['user_id', 'section_id', 'name', 'content', 'open'];
     public function posts() {
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Post::class);
     }
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
     public function section() {
-        return $this->belongsTo('App\Section');
+        return $this->belongsTo(Section::class);
     }
 
     public function addPost($post) {

@@ -36,23 +36,19 @@
                             <p>Please login to post a thread.</p>
                         @endif
                     </div>
-                    <div class="panel-body">
-                        @foreach($section->threads()->latest()->get() as $thread)
-                            <div class="card card-default" style="width: 60rem;">
-                                <div class="card-body">
-                                    <h4 class="card-title"><a href="/section/{{$section->id}}/{{$thread->id}}">{{$thread->name}}</a></h4>
-
-                                    <h5 class="card-subtitle mb-2 text-muted">Created by <a href="/user/{{$thread->user->id}}">{{$thread->user->name}}</a>
-                                         {{$thread->created_at->diffForHumans()}}</h5>
-                                    <hr>
-                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>-->
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
                 </div>
+                @foreach($section->threads()->latest()->get() as $thread)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2><a href="/section/{{$section->id}}/{{$thread->id}}">{{$thread->name}}</a></h2>
+                            <h5 class="card-subtitle mb-2 text-muted">Created by <a href="/user/{{$thread->user->id}}">{{$thread->user->name}}</a>
+                                {{$thread->created_at->diffForHumans()}}</h5>
+                        </div>
+                        <div class="panel-body">
+                            <h5 class="card-subtitle mb-2 text-muted">{{$thread->content}}</h5>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

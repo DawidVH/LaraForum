@@ -14,9 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'dob', 'gender', 'role'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -27,9 +25,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     public function threads() {
-        return $this->hasMany('App\Thread');
+        return $this->hasMany(Thread::class);
     }
     public function posts() {
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Post::class);
     }
 }
