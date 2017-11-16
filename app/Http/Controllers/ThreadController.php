@@ -11,6 +11,11 @@ class ThreadController extends Controller
         return view('thread.show', compact('thread'));
     }
    public function store(Section $section) {
+        $this -> validate(request(), [
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
         $section->addThread([
             'name' => request('title'),
             'content' => request('content'),

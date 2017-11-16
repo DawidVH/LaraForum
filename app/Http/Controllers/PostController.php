@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function store(Thread $thread) {
+        $this->validate(request(), [
+            'content' => 'required'
+        ]);
         $thread->addPost([
             'content' => request('content'),
             'user_id' => auth()->id(),

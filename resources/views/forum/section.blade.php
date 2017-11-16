@@ -13,6 +13,15 @@
                                     Create a thread
                                 </button>
                             </p>
+                            @if(count($errors))
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="collapse" id="collapseCreateThread">
                                 <div class="card card-default">
                                     <div class="card-heading">
