@@ -13,6 +13,9 @@ class SectionController extends Controller
     }
 
     public function show(Section $section) {
-        return view('forum.section', compact('section'));
+        return view('forum.section', [
+            'section' => $section,
+            'threads' => $section->threads()->latest()->paginate(10)
+        ]);
     }
 }

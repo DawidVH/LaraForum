@@ -40,7 +40,7 @@
                         @endif
                     </div>
                 </div>
-                @foreach($section->threads()->latest()->get() as $thread)
+                @foreach($threads as $thread)
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h2><a href="/section/{{$section->id}}/{{$thread->id}}">{{$thread->name}}</a></h2>
@@ -52,6 +52,7 @@
                         </div>
                     </div>
                 @endforeach
+                {{$threads->links()}}
             </div>
         </div>
     </div>
