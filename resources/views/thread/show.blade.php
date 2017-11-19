@@ -10,7 +10,7 @@
                     </div>
                     <div class="panel-body">
                         <p>{{$thread->content}}</p>
-                        <form action="/section/{section}/{thread}" method="POST">
+                        <form action="/section/{{$section->id}}/{{$thread->id}}" method="POST">
                             {{csrf_field()}}
                             {{method_field('delete')}}
                             <button type="submit" class="btn btn-link">Delete thread</button>

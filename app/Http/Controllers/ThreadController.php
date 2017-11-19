@@ -10,7 +10,8 @@ class ThreadController extends Controller
     public function show(Section $section, Thread $thread) {
         return view('thread.show', [
             'thread' => $thread,
-            'posts' => $thread->posts()->paginate(10)
+            'posts' => $thread->posts()->paginate(10),
+            'section' => $section
         ]);
     }
    public function store(Section $section) {
