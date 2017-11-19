@@ -10,6 +10,11 @@
                     </div>
                     <div class="panel-body">
                         <p>{{$thread->content}}</p>
+                        <form action="/section/{section}/{thread}" method="POST">
+                            {{csrf_field()}}
+                            {{method_field('delete')}}
+                            <button type="submit" class="btn btn-link">Delete thread</button>
+                        </form>
                     </div>
                 </div>
                 @foreach($posts as $post)

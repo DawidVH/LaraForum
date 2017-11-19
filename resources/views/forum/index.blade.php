@@ -6,13 +6,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                @role('admin')
-                <p>This is visible to users with the admin role. Gets translated to
-                    \Entrust::role('admin')</p>
-                @endrole
-                @if(auth()->user()->hasRole('admin'))
-                    admin
-                @endif
                 @if(auth()->check())
                     <div class="panel panel-default">
                         <div class="panel-heading">

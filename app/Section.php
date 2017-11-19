@@ -11,7 +11,6 @@ class Section extends Model
     }
 
     public function addThread($thread) {
-
         $this->threads()->create($thread);
     }
 }

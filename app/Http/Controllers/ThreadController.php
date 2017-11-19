@@ -27,4 +27,10 @@ class ThreadController extends Controller
         ]);
         return back();
    }
+
+    public function destroy(Section $section, Thread $thread) {
+        $thread->posts()->delete();
+        $thread->delete();
+        return redirect('/');
+    }
 }
