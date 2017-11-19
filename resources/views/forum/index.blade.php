@@ -1,9 +1,18 @@
 @extends('layouts.app')
-
+@section('title')
+    LaraForum
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>
+                            Welcome back {{auth()->user()->name}}
+                        </h3>
+                    </div>
+                </div>
                 <div class="panel panel-default">
                     <div class="panel-heading"><h2>Sections</h2></div>
 

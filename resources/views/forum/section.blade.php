@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    {{$section->name}}
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
@@ -13,15 +15,7 @@
                                     Create a thread
                                 </button>
                             </p>
-                            @if(count($errors))
-                                <div class="alert alert-danger" role="alert">
-                                    <ul>
-                                        @foreach($errors->all() as $error)
-                                            <li>{{$error}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
+                            @include('partials.error')
                             <div class="collapse" id="collapseCreateThread">
                                 <div class="card card-default">
                                     <div class="card-heading">
@@ -31,10 +25,10 @@
                                         <form method="post" action="/section/{{$section->id}}/create">
                                             {{csrf_field()}}
                                             <div class="form-group">
-                                                <input name="title" id="title" class="form-control" placeholder="Title">
+                                                <input name="title" id="title" class="form-control" placeholder="Title" required>
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="content" id="content" class="form-control" placeholder="Content" rows="5"></textarea>
+                                                <textarea name="content" id="content" class="form-control" placeholder="Content" rows="5" required></textarea>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Post</button>
                                         </form>
