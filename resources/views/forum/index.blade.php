@@ -6,15 +6,41 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @role('admin')
+                <p>This is visible to users with the admin role. Gets translated to
+                    \Entrust::role('admin')</p>
+                @endrole
+                @if(auth()->user()->hasRole('admin'))
+                    admin
+                @endif
+                @if(auth()->check())
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>
+                                Welcome back {{auth()->user()->name}}
+                            </h3>
+                        </div>
+                    </div>
+                @else
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2>
+                                Welcome
+                            </h2>
+                        </div>
+                        <div class="panel-body">
+                            <h4>
+                                To create your own thread or reply to the existing ones, please register or login.
+                            </h4>
+                        </div>
+                    </div>
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3>
-                            Welcome back {{auth()->user()->name}}
-                        </h3>
+                        <h2>
+                            Sections
+                        </h2>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h2>Sections</h2></div>
 
                     <div class="panel-body">
                         @foreach($sections as $section)

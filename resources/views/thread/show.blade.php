@@ -12,7 +12,7 @@
                         <p>{{$thread->content}}</p>
                     </div>
                 </div>
-                @foreach($thread->posts()->get() as $post)
+                @foreach($posts as $post)
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4><a href="/user/{{$post->user->id}}">{{$post->user->name}}</a> said:</h4>
@@ -41,7 +41,8 @@
                 @else
                     <p>Please login to post replies.</p>
                 @endif
-                </div>
+                {{$posts->links()}}
+            </div>
         </div>
     </div>
 @endsection

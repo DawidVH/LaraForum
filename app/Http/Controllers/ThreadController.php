@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class ThreadController extends Controller
 {
     public function show(Section $section, Thread $thread) {
-        return view('thread.show', compact('thread'));
+        return view('thread.show', [
+            'thread' => $thread,
+            'posts' => $thread->posts()->paginate(10)
+        ]);
     }
    public function store(Section $section) {
         $this -> validate(request(), [
