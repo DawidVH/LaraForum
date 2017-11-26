@@ -10,11 +10,16 @@
                     </div>
                     <div class="panel-body">
                         <p>{{$thread->content}}</p>
-                        <form action="/section/{{$section->id}}/{{$thread->id}}" method="POST">
-                            {{csrf_field()}}
-                            {{method_field('delete')}}
-                            <button type="submit" class="btn btn-link">Delete thread</button>
-                        </form>
+                        @if(auth()->check())
+                            @if(auth()->user()->id == $thread->user_id || auth()->user()->hasRole('admin'))
+                                <form action="/thread/{{$thread->id}}" method="POST">
+                                    {{csrf_field()}}
+                                    {{method_field('delete')}}
+                                    <button type="submit" class="btn btn-link">Delete thread</button>
+                                </form>
+                            @endif
+                        @endif
+
                     </div>
                 </div>
                 @foreach($posts as $post)
@@ -25,6 +30,15 @@
                         <div class="panel-body">
                             <p>{{$post->content}}</p>
                         </div>
+                        @if(auth()->check())
+                            @if(auth()->user()->id == $thread->user_id || auth()->user()->hasRole('admin'))
+                                <form action="/post/{{$post->id}}" method="POST">
+                                    {{csrf_field()}}
+                                    {{method_field('delete')}}
+                                    <button type="submit" class="btn btn-link">Delete post</button>
+                                </form>
+                            @endif
+                        @endif
                     </div>
                 @endforeach
                 @if(auth()->check())
@@ -33,7 +47,7 @@
                             <h4>Post a reply</h4>
                         </div>
                         <div class="panel-body">
-                            <form method="post" action="/thread/{{$thread->id}}/post">
+                            <form method="post" action="/post/{{$thread->id}}">
                                 {{csrf_field()}}
                                 <div class="form-group">
                                     <textarea name="content" id="content" class="form-control" placeholder="Reply" rows="5" required></textarea>

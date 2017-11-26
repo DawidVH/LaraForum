@@ -23,7 +23,8 @@
                         </div>
                         <div class="panel-body">
                             <h4>
-                                To create your own thread or reply to the existing ones, please register or login.
+                                To create your own thread or reply to the existing ones, please <a href="{{ route('login') }}">login</a>
+                                or <a href="{{ route('register') }}">register</a>.
                             </h4>
                         </div>
                     </div>
@@ -41,13 +42,10 @@
                                 <div class="card-body">
                                     <h3 class="card-title"><a href="/section/{{$section->id}}">{{$section->name}}</a></h3>
                                     @if(count($section->threads))
-                                        <h4>Latest thread: <a href="/thread/{{$section->threads->last()->id}}">{{$section->threads->last()->name}}</a></h4>
+                                        <h4>Latest thread: <a href="/section/{{$section->id}}/{{$section->threads->last()->id}}">{{$section->threads->last()->name}}</a></h4>
                                         @else
                                         <h4>This section doesn't have any threads yet.</h4>
                                     @endif
-                                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>-->
                                 </div>
                             </div>
                         @endforeach

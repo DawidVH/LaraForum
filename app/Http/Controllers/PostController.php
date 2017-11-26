@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Thread;
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,6 +16,10 @@ class PostController extends Controller
             'user_id' => auth()->id(),
             'thread_id' => $thread->id
         ]);
+        return back();
+    }
+    public function destroy(Post $post) {
+        $post->delete();
         return back();
     }
 }

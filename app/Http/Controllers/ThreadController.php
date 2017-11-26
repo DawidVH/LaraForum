@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Thread;
+use App\Thread as Thread;
 use App\Section;
 use Illuminate\Http\Request;
 
@@ -29,7 +29,7 @@ class ThreadController extends Controller
         return back();
    }
 
-    public function destroy(Section $section, Thread $thread) {
+    public function destroy(Thread $thread) {
         $thread->posts()->delete();
         $thread->delete();
         return redirect('/');
