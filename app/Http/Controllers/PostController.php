@@ -20,6 +20,8 @@ class PostController extends Controller
     }
     public function destroy(Post $post) {
         $post->delete();
+        session()->flash('message', 'The post has been deleted.');
+
         return back();
     }
 }

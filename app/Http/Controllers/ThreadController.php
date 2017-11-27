@@ -32,6 +32,8 @@ class ThreadController extends Controller
     public function destroy(Thread $thread) {
         $thread->posts()->delete();
         $thread->delete();
+        session()->flash('message', 'The thread has now been deleted.');
+
         return redirect('/');
     }
 }

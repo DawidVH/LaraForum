@@ -17,6 +17,7 @@
     <div id="app">
         @include('partials.navbar')
         <main role="main" class="container">
+            @include('partials.flash')
             @yield('content')
         </main>
     </div>

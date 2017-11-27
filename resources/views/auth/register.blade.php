@@ -39,6 +39,36 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                            <label for="dob" class="col-md-4 control-label">Date Of Birth</label>
+
+                            <div class="col-md-6">
+                                <input id="dob" type="date" class="form-control" name="dob" min="1990-01-01" max="2007-01-01" value="{{ old('dob') }}" required autofocus>
+
+                                @if ($errors->has('dob'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('dob') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
+
+                            <div class="col-md-6">
+                                <input id="gender" type="radio" name="gender" value="male"> Male<br>
+                                <input id="gender" type="radio" name="gender" value="female"> Female<br>
+                                <input id="gender" type="radio" name="gender" value="other" required autofocus> Other
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

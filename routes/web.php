@@ -10,7 +10,7 @@ Route::post('/section/{section}/create', ['middleware' => 'auth', 'uses' => 'Thr
 
 Route::delete('/thread/{thread}', ['middleware' => 'auth', 'uses' => 'ThreadController@destroy'])->name('delete.thread');
 
-Route::delete('/post/{post}', ['middleware' => ['auth', 'author'], 'uses' => 'PostController@destroy'])->name('delete.post');
+Route::delete('/post/{post}', ['middleware' => 'auth', 'uses' => 'PostController@destroy'])->name('delete.post');
 Route::post('/post/{thread}', ['middleware' => 'auth', 'uses' => 'PostController@store'])->name('store.post');
 
 Route::get('/user/{user}', 'UserController@show');
