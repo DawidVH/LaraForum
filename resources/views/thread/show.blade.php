@@ -1,5 +1,20 @@
 @extends('layouts.app')
+@section('title')
+    {{$thread->name}}
+@endsection
 @section('content')
+    <script>
+
+        function ConfirmDelete()
+        {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+
+    </script>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -12,7 +27,7 @@
                         <p>{{$thread->content}}</p>
                         @if(auth()->check())
                             @if(auth()->user()->id == $thread->user_id || auth()->user()->hasRole('admin'))
-                                <form action="/thread/{{$thread->id}}" method="POST">
+                                <form method="post" action="/thread/{{$thread->id}}" onsubmit="return ConfirmDelete()">
                                     {{csrf_field()}}
                                     {{method_field('delete')}}
                                     <button type="submit" class="btn btn-link">Delete thread</button>
@@ -32,7 +47,7 @@
                         </div>
                         @if(auth()->check())
                             @if(auth()->user()->id == $thread->user_id || auth()->user()->hasRole('admin'))
-                                <form action="/post/{{$post->id}}" method="POST">
+                                <form method="post" action="/post/{{$post->id}}" onsubmit="return ConfirmDelete()">
                                     {{csrf_field()}}
                                     {{method_field('delete')}}
                                     <button type="submit" class="btn btn-link">Delete post</button>
