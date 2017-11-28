@@ -14,6 +14,7 @@ Route::delete('/post/{post}', ['middleware' => 'auth', 'uses' => 'PostController
 Route::post('/post/{thread}', ['middleware' => 'auth', 'uses' => 'PostController@store'])->name('store.post');
 
 Route::get('/user/{user}', 'UserController@show');
+Route::put('user/{user}', 'UserController@update');
 
 
 
