@@ -39,7 +39,7 @@ class ThreadController extends Controller
 
             return redirect('/');
         } else {
-            session()->flash('message', 'You are not allowed to do that');
+            session()->flash('message', 'You are not allowed to do that.');
             return back();
         }
 

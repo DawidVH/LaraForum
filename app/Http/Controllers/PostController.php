@@ -19,9 +19,17 @@ class PostController extends Controller
         return back();
     }
     public function destroy(Post $post) {
-        $post->delete();
-        session()->flash('message', 'The post has been deleted.');
+        $owner = $post->user()->getParent();
+        if(auth()->id()==$owner->id || auth()->user()->hasRole('admin')) {
+            $post->delete();
+            session()->flash('message', 'The post has been deleted.');
 
-        return back();
+            return back();
+        } else {
+            session()->flash('message', 'You are not allowed ot do that.');
+
+            return back();
+        }
+
     }
 }
