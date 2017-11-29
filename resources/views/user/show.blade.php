@@ -11,6 +11,8 @@
                         <h2 >User profile</h2>
                     </div>
                     <div class="panel-body">
+                        {{--<img src="{{load(public_path('uploads/avatars/profile.svg'))}}" alt="avatar" width="200" height="200"/>--}}
+
                         @if(auth()->id()==$user->id)
                             <form class="form-horizontal" method="POST" action="/user/{{$user->id}}">
                                 {{ csrf_field() }}
