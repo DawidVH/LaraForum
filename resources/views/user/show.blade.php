@@ -12,7 +12,9 @@
                     </div>
                     <div class="panel-body">
                         {{--<img src="{{load(public_path('uploads/avatars/profile.svg'))}}" alt="avatar" width="200" height="200"/>--}}
-
+                        <svg class="avatar">
+                            <path d=""></path>
+                        </svg>
                         @if(auth()->id()==$user->id)
                             <form class="form-horizontal" method="POST" action="/user/{{$user->id}}">
                                 {{ csrf_field() }}

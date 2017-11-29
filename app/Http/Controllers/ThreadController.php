@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Thread as Thread;
+use App\User as User;
 use App\Section;
 use Illuminate\Http\Request;
 
@@ -30,10 +31,17 @@ class ThreadController extends Controller
    }
 
     public function destroy(Thread $thread) {
-        $thread->posts()->delete();
-        $thread->delete();
-        session()->flash('message', 'The thread has now been deleted.');
+        $owner = $thread->user()->getParent();
+        if(auth()->id()==$owner->id || auth()->user()->hasRole('admin')) {
+            $thread->posts()->delete();
+            $thread->delete();
+            session()->flash('message', 'The thread has now been deleted.');
 
-        return redirect('/');
+            return redirect('/');
+        } else {
+            session()->flash('message', 'You are not allowed to do that');
+            return back();
+        }
+
     }
 }
